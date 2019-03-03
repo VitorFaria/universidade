@@ -1,0 +1,20 @@
+<div class="col-md-6 aluno-container">
+  <h2 style="margin: auto"> Listagem de Alunos</h2>
+  <button class="btn btn-danger" style="width:100px" (click)="addAluno()"> Adicionar Aluno</button>
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th class="hidden">Id</th>
+      <th>Nome</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let aluno of alunos">
+      <td class="hidden">{{aluno.id}}</td>
+      <td>{{aluno.nome}}</td>
+      <td><button class="btn btn-success" (click)="deleteAluno(aluno)"> Deletar</button>
+        <button class="btn btn-success" (click)="editAluno(aluno)" style="margin-left: 20px;"> Editar</button></td>
+    </tr>
+    </tbody>
+  </table>
+</div>
