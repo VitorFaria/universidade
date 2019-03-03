@@ -1,7 +1,7 @@
 import { Component, OnInit , Inject} from '@angular/core';
 import {Router} from "@angular/router";
-import {Aluno} from "../model/aluno.model";
-import {ApiService} from "../core/api.service";
+import {Aluno} from "../../model/aluno.model";
+import {ApiService} from "../../core/api.service";
 
 @Component({
   selector: 'app-list-aluno',
