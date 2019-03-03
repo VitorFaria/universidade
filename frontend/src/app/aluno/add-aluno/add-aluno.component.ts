@@ -13,19 +13,29 @@ export class AddAlunoComponent implements OnInit {
   constructor(private formBuilder: FormBuilder,private router: Router, private apiService: ApiService) { }
 
   addForm: FormGroup;
+  submitted = false;
 
   ngOnInit() {
     this.addForm = this.formBuilder.group({
       id: [],
       nome: ['', Validators.required],
-      cpf: ['', Validators.required],
-      email: ['', Validators.required],
+      cpf: ['', [Validators.required, Validators.pattern('[0-9]{11}$')]],
+      email: ['', [Validators.required, Validators.email]],
       data_nascimento: ['', Validators.required]
     });
 
   }
 
+  get email() { return this.addForm.get('email'); }
+
   onSubmit() {
+    this.submitted = true;
+
+    if(this.addForm.invalid){
+      alert("Campos inválidos!");
+      return;
+    }
+
     this.apiService.createAluno(this.addForm.value)
       .subscribe( data => {
         if(data.status === 200) {
