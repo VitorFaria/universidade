@@ -1,0 +1,26 @@
+<div class="col-md-8 user-container">
+  <h2 class="text-center">Adicionar Aluno</h2>
+  <form [formGroup]="addForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="nome">Nome:</label>
+      <input type="text" formControlName="nome" placeholder="Nome" name="nome" class="form-control" id="nome">
+    </div>
+
+    <div class="form-group">
+      <label for="cpf">CPF:</label>
+      <input type="cpf" formControlName="cpf" placeholder="CPF" name="cpf" class="form-control" id="cpf">
+    </div>
+
+    <div class="form-group">
+      <label for="email">E-mail:</label>
+      <input formControlName="email" placeholder="E-mail" name="email" class="form-control" id="email">
+    </div>
+
+    <div class="form-group">
+      <label for="data_nascimento">Data de nascimento:</label>
+      <input type="date" formControlName="data_nascimento" placeholder="Data de nascimento" name="data_nascimento" class="form-control" id="data_nascimento">
+    </div>
+
+    <button class="btn btn-success">Salvar</button>
+  </form>
+</div>
