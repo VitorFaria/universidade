@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface AlunoService {
 
-    Aluno save(AlunoDto user);
+    Aluno save(AlunoDto user) throws Exception;
     List<Aluno> findAll();
     void delete(int id);
 
@@ -15,5 +15,5 @@ public interface AlunoService {
 
     Aluno findById(int id);
 
-    AlunoDto update(AlunoDto userDto);
+    AlunoDto update(AlunoDto userDto) throws Exception;
 }

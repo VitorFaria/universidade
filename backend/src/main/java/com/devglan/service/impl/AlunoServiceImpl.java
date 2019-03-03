@@ -6,6 +6,7 @@ import com.devglan.model.AlunoDto;
 import com.devglan.service.AlunoService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -43,22 +44,32 @@ public class AlunoServiceImpl implements AlunoService {
 	}
 
     @Override
-    public AlunoDto update(AlunoDto userDto) {
-        Aluno user = findById(userDto.getId());
-        if(user != null) {
-            BeanUtils.copyProperties(userDto, user, "password");
-            alunoDao.save(user);
+    public AlunoDto update(AlunoDto alunoDto) throws Exception {
+        Aluno aluno = findById(alunoDto.getId());
+        if(aluno != null) {
+            BeanUtils.copyProperties(alunoDto, aluno);
+            try {
+            	alunoDao.save(aluno);
+            }
+            catch (DataIntegrityViolationException e) {
+                throw new Exception("CPF já cadastrado.");
+            }
         }
-        return userDto;
+        return alunoDto;
     }
 
     @Override
-    public Aluno save(AlunoDto aluno) {
+    public Aluno save(AlunoDto aluno) throws Exception {
 	    Aluno newAluno = new Aluno();
 	    newAluno.setNome(aluno.getNome());
 	    newAluno.setCpf(aluno.getCpf());
 	    newAluno.setEmail(aluno.getEmail());
 	    newAluno.setData_nascimento(aluno.getData_nascimento());
-        return alunoDao.save(newAluno);
+        try {
+        	return alunoDao.save(newAluno);
+        }
+        catch (DataIntegrityViolationException e) {
+            throw new Exception("CPF já cadastrado.");
+        }
     }
 }

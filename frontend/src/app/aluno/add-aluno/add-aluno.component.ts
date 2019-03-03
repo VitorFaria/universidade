@@ -28,7 +28,14 @@ export class AddAlunoComponent implements OnInit {
   onSubmit() {
     this.apiService.createAluno(this.addForm.value)
       .subscribe( data => {
-        this.router.navigate(['list-aluno']);
+        if(data.status === 200) {
+            this.router.navigate(['list-aluno']);
+          }else {
+            alert(data.message);
+          }
+      },
+      error =>{
+        alert(error.message);
       });
   }
 

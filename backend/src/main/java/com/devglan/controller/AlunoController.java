@@ -20,22 +20,32 @@ public class AlunoController {
 
     @PostMapping
     public ApiResponse<Aluno> saveAluno(@RequestBody AlunoDto aluno){
-        return new ApiResponse<>(HttpStatus.OK.value(), "Aluno saved successfully.",alunoService.save(aluno));
+    	try {
+    		return new ApiResponse<>(HttpStatus.OK.value(), "Aluno salvo corretamente.",alunoService.save(aluno));
+    	} catch (Exception e) {
+    		return new ApiResponse<>(HttpStatus.INTERNAL_SERVER_ERROR.value(), e.getMessage(), null);
+    	}
+    	
     }
 
     @GetMapping
     public ApiResponse<List<Aluno>> listAluno(){
-        return new ApiResponse<>(HttpStatus.OK.value(), "Aluno list fetched successfully.",alunoService.findAll());
+        return new ApiResponse<>(HttpStatus.OK.value(), "Lista de alunos obtida corretamente.",alunoService.findAll());
     }
 
     @GetMapping("/{id}")
     public ApiResponse<Aluno> getOne(@PathVariable int id){
-        return new ApiResponse<>(HttpStatus.OK.value(), "Aluno fetched successfully.",alunoService.findById(id));
+        return new ApiResponse<>(HttpStatus.OK.value(), "Aluno obtido corretamente.",alunoService.findById(id));
     }
 
     @PutMapping("/{id}")
     public ApiResponse<AlunoDto> update(@RequestBody AlunoDto alunoDto) {
-        return new ApiResponse<>(HttpStatus.OK.value(), "Aluno updated successfully.",alunoService.update(alunoDto));
+        try {
+        	return new ApiResponse<>(HttpStatus.OK.value(), "Aluno atualizado corretamente.",alunoService.update(alunoDto));
+    	} catch (Exception e) {
+    		return new ApiResponse<>(HttpStatus.INTERNAL_SERVER_ERROR.value(), e.getMessage(), null);
+    	}
+    	
     }
 
     @DeleteMapping("/{id}")
