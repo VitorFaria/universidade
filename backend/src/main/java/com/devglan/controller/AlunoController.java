@@ -51,7 +51,7 @@ public class AlunoController {
     @DeleteMapping("/{id}")
     public ApiResponse<Void> delete(@PathVariable int id) {
         alunoService.delete(id);
-        return new ApiResponse<>(HttpStatus.OK.value(), "Aluno fetched successfully.", null);
+        return new ApiResponse<>(HttpStatus.OK.value(), "Aluno obtido corretamente.", null);
     }
 
 
