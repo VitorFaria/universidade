@@ -1,0 +1,27 @@
+<div class="col-md-8 matricula-container">
+  <h2 style="margin: auto"> Listagem de Matriculas</h2>
+  <button class="btn btn-danger" style="width:200px" (click)="addMatricula()"> Adicionar Matricula</button>
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th class="hidden">Id Aluno</th>
+      <th class="hidden">Id Curso</th>
+      <th>Aluno</th>
+      <th>Curso</th>
+      <th>Data de Matrícula</th>
+      <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let matricula of matriculas">
+      <td class="hidden">{{matricula.aluno.id}}</td>
+      <td class="hidden">{{matricula.curso.id}}</td>
+      <td class="hidden">{{matricula.aluno.nome}}</td>
+      <td class="hidden">{{matricula.curso.nome}}</td>
+      <td>{{matricula.data_matricula | date: 'dd/MM/yyyy'}}</td>
+      <td><button class="btn btn-success" (click)="deleteMatricula(matricula)"> Deletar</button>
+        <button class="btn btn-success" (click)="editMatricula(matricula)" style="margin-left: 20px;"> Editar</button></td>
+    </tr>
+    </tbody>
+  </table>
+</div>

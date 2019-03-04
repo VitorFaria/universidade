@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import {User} from "../model/user.model";
 import {Aluno} from "../model/aluno.model";
 import {Curso} from "../model/curso.model";
+import {Matricula} from "../model/matricula.model";
 import {Observable} from "rxjs/index";
 import {ApiResponse} from "../model/api.response";
 
@@ -14,6 +15,7 @@ export class ApiService {
   baseUserUrl: string = this.baseUrl + 'users/';
   baseAlunoUrl: string = this.baseUrl + 'alunos/';
   baseCursoUrl: string = this.baseUrl + 'cursos/';
+  baseMatriculaUrl: string = this.baseUrl + 'matriculas/';
 
   login(loginPayload) : Observable<ApiResponse> {
     return this.http.post<ApiResponse>(this.baseUrl + 'token/generate-token', loginPayload);
@@ -79,5 +81,26 @@ export class ApiService {
 
   deleteCurso(id: number): Observable<ApiResponse> {
     return this.http.delete<ApiResponse>(this.baseCursoUrl + id);
+  }
+
+
+   getMatriculas() : Observable<ApiResponse> {
+    return this.http.get<ApiResponse>(this.baseMatriculaUrl);
+  }
+
+  getMatriculaById(id_aluno: number, id_curso: number): Observable<ApiResponse> {
+    return this.http.get<ApiResponse>(this.baseMatriculaUrl + id_aluno + '/' + id_curso);
+  }
+
+  createMatricula(matricula: Matricula): Observable<ApiResponse> {
+    return this.http.post<ApiResponse>(this.baseMatriculaUrl, matricula);
+  }
+
+  updateMatricula(matricula: Matricula): Observable<ApiResponse> {
+    return this.http.put<ApiResponse>(this.baseMatriculaUrl + matricula.id_aluno + '/' + matricula.id_curso, matricula);
+  }
+
+  deleteMatricula(id_aluno: number, id_curso: number): Observable<ApiResponse> {
+    return this.http.delete<ApiResponse>(this.baseMatriculaUrl + id_aluno + '/' + id_curso);
   }
 }

@@ -6,6 +6,9 @@ import javax.persistence.*;
 @Embeddable
 public class MatriculaId implements Serializable {
 
+	public MatriculaId() {
+	}
+
 	public MatriculaId(int id_aluno, int id_curso) {
 		this.id_aluno = id_aluno;
 		this.id_curso = id_curso;
