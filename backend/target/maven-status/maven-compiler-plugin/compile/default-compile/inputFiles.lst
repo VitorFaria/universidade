@@ -14,12 +14,14 @@ C:\GitVitor\universidade\backend\src\main\java\com\devglan\controller\UserContro
 C:\GitVitor\universidade\backend\src\main\java\com\devglan\dao\CursoDao.java
 C:\GitVitor\universidade\backend\src\main\java\com\devglan\model\AlunoDto.java
 C:\GitVitor\universidade\backend\src\main\java\com\devglan\service\impl\CursoServiceImpl.java
+C:\GitVitor\universidade\backend\src\main\java\com\devglan\dao\MatriculaDao.java
 C:\GitVitor\universidade\backend\src\main\java\com\devglan\model\Curso.java
 C:\GitVitor\universidade\backend\src\main\java\com\devglan\service\UserService.java
 C:\GitVitor\universidade\backend\src\main\java\com\devglan\config\WebSecurityConfig.java
 C:\GitVitor\universidade\backend\src\main\java\com\devglan\model\AuthToken.java
 C:\GitVitor\universidade\backend\src\main\java\com\devglan\model\Constants.java
 C:\GitVitor\universidade\backend\src\main\java\com\devglan\model\ApiResponse.java
+C:\GitVitor\universidade\backend\src\main\java\com\devglan\service\impl\MatriculaServiceImpl.java
 C:\GitVitor\universidade\backend\src\main\java\com\devglan\service\impl\AlunoServiceImpl.java
 C:\GitVitor\universidade\backend\src\main\java\com\devglan\config\JwtAuthenticationFilter.java
 C:\GitVitor\universidade\backend\src\main\java\com\devglan\model\Matricula.java
@@ -27,6 +29,9 @@ C:\GitVitor\universidade\backend\src\main\java\com\devglan\dao\UserDao.java
 C:\GitVitor\universidade\backend\src\main\java\com\devglan\config\ExceptionAdvice.java
 C:\GitVitor\universidade\backend\src\main\java\com\devglan\config\JwtTokenUtil.java
 C:\GitVitor\universidade\backend\src\main\java\com\devglan\service\CursoService.java
+C:\GitVitor\universidade\backend\src\main\java\com\devglan\service\MatriculaService.java
+C:\GitVitor\universidade\backend\src\main\java\com\devglan\controller\MatriculaController.java
 C:\GitVitor\universidade\backend\src\main\java\com\devglan\controller\CursoController.java
 C:\GitVitor\universidade\backend\src\main\java\com\devglan\model\UserDto.java
+C:\GitVitor\universidade\backend\src\main\java\com\devglan\model\MatriculaDto.java
 C:\GitVitor\universidade\backend\src\main\java\com\devglan\model\User.java
