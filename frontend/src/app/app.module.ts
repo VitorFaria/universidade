@@ -9,6 +9,7 @@ import { ListUserComponent } from './user/list-user/list-user.component';
 import { AddAlunoComponent } from './aluno/add-aluno/add-aluno.component';
 import { EditAlunoComponent } from './aluno/edit-aluno/edit-aluno.component';
 import { ListAlunoComponent } from './aluno/list-aluno/list-aluno.component';
+import { ListCursoComponent } from './curso/list-curso/list-curso.component';
 import {ApiService} from "./core/api.service";
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {ReactiveFormsModule} from "@angular/forms";
@@ -24,7 +25,8 @@ import {TokenInterceptor} from "./core/interceptor";
     ListUserComponent,
     AddAlunoComponent,
     EditAlunoComponent,
-    ListAlunoComponent
+    ListAlunoComponent,
+    ListCursoComponent
   ],
   imports: [
     BrowserModule,

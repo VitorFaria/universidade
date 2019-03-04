@@ -1,0 +1,25 @@
+<div class="col-md-8 curso-container">
+  <h2 style="margin: auto"> Listagem de Cursos</h2>
+  <button class="btn btn-danger" style="width:200px" (click)="addCurso()"> Adicionar Curso</button>
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th class="hidden">Id</th>
+      <th>Nome</th>
+      <th>Data de início</th>
+      <th>Data de fim</th>
+      <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let curso of cursos">
+      <td class="hidden">{{curso.id}}</td>
+      <td>{{curso.nome}}</td>
+      <td>{{curso.data_inicio | date: 'dd/MM/yyyy'}}</td>
+      <td>{{curso.data_fim | date: 'dd/MM/yyyy'}}</td>
+      <td><button class="btn btn-success" (click)="deleteCurso(curso)"> Deletar</button>
+        <button class="btn btn-success" (click)="editCurso(curso)" style="margin-left: 20px;"> Editar</button></td>
+    </tr>
+    </tbody>
+  </table>
+</div>

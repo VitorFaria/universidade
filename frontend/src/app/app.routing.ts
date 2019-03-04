@@ -6,6 +6,8 @@ import {EditUserComponent} from "./user/edit-user/edit-user.component";
 import {AddAlunoComponent } from './aluno/add-aluno/add-aluno.component';
 import {ListAlunoComponent} from "./aluno/list-aluno/list-aluno.component";
 import {EditAlunoComponent} from "./aluno/edit-aluno/edit-aluno.component";
+import {ListCursoComponent } from './curso/list-curso/list-curso.component';
+
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -15,6 +17,7 @@ const routes: Routes = [
   { path: 'add-aluno', component: AddAlunoComponent },
   { path: 'list-aluno', component: ListAlunoComponent },
   { path: 'edit-aluno', component: EditAlunoComponent },
+  { path: 'list-curso', component: ListCursoComponent },
   {path : '', component : LoginComponent}
 ];
 

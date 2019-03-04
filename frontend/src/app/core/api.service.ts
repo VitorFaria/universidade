@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import {User} from "../model/user.model";
 import {Aluno} from "../model/aluno.model";
+import {Curso} from "../model/curso.model";
 import {Observable} from "rxjs/index";
 import {ApiResponse} from "../model/api.response";
 
@@ -12,9 +13,10 @@ export class ApiService {
   baseUrl: string = 'http://localhost:8080/';
   baseUserUrl: string = this.baseUrl + 'users/';
   baseAlunoUrl: string = this.baseUrl + 'alunos/';
+  baseCursoUrl: string = this.baseUrl + 'cursos/';
 
   login(loginPayload) : Observable<ApiResponse> {
-    return this.http.post<ApiResponse>('http://localhost:8080/' + 'token/generate-token', loginPayload);
+    return this.http.post<ApiResponse>(this.baseUrl + 'token/generate-token', loginPayload);
   }
 
   getUsers() : Observable<ApiResponse> {
@@ -56,5 +58,26 @@ export class ApiService {
 
   deleteAluno(id: number): Observable<ApiResponse> {
     return this.http.delete<ApiResponse>(this.baseAlunoUrl + id);
+  }
+
+
+  getCursos() : Observable<ApiResponse> {
+    return this.http.get<ApiResponse>(this.baseCursoUrl);
+  }
+
+  getCursoById(id: number): Observable<ApiResponse> {
+    return this.http.get<ApiResponse>(this.baseCursoUrl + id);
+  }
+
+  createCurso(curso: Curso): Observable<ApiResponse> {
+    return this.http.post<ApiResponse>(this.baseCursoUrl, curso);
+  }
+
+  updateCurso(curso: Curso): Observable<ApiResponse> {
+    return this.http.put<ApiResponse>(this.baseCursoUrl + curso.id, curso);
+  }
+
+  deleteCurso(id: number): Observable<ApiResponse> {
+    return this.http.delete<ApiResponse>(this.baseCursoUrl + id);
   }
 }
