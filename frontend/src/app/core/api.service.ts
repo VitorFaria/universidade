@@ -97,7 +97,7 @@ export class ApiService {
   }
 
   updateMatricula(matricula: Matricula): Observable<ApiResponse> {
-    return this.http.put<ApiResponse>(this.baseMatriculaUrl + matricula.id_aluno + '/' + matricula.id_curso, matricula);
+    return this.http.put<ApiResponse>(this.baseMatriculaUrl + matricula.aluno.id + '/' + matricula.curso.id, matricula);
   }
 
   deleteMatricula(id_aluno: number, id_curso: number): Observable<ApiResponse> {

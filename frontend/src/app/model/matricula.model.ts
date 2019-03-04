@@ -1,6 +1,9 @@
+import {Aluno} from "../model/aluno.model";
+import {Curso} from "../model/curso.model";
+
 export class Matricula {
 
-  id_aluno: number;
-  id_curso: number;
+  aluno: Aluno;
+  curso: Curso;
 
 }

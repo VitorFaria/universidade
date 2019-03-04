@@ -26,7 +26,7 @@ export class ListMatriculaComponent implements OnInit {
   }
 
   deleteMatricula(matricula: Matricula): void {
-    this.apiService.deleteMatricula(matricula.id_aluno, matricula.id_curso)
+    this.apiService.deleteMatricula(matricula.aluno.id, matricula.curso.id)
       .subscribe( data => {
         this.matriculas = this.matriculas.filter(u => u !== matricula);
       })
@@ -34,7 +34,7 @@ export class ListMatriculaComponent implements OnInit {
 
   editMatricula(matricula: Matricula): void {
     window.localStorage.removeItem("editMatriculaId");
-    window.localStorage.setItem("editMatriculaId", matricula.id_aluno.toString()+ "sep" + matricula.id_curso.toString());
+    window.localStorage.setItem("editMatriculaId", matricula.aluno.id.toString()+ "sep" + matricula.curso.id.toString());
     this.router.navigate(['edit-matricula']);
   };
 

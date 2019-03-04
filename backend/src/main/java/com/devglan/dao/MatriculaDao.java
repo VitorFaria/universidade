@@ -9,10 +9,10 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface MatriculaDao extends CrudRepository<Matricula, Integer> {
+public interface MatriculaDao extends CrudRepository<Matricula, MatriculaId> {
 
-	void deleteById(MatriculaId mId);
+	//void deleteByMatriculaId(MatriculaId mId);
 
-	Optional<Matricula> findById(MatriculaId mId);
+	//Optional<Matricula> findByMatriculaId(MatriculaId mId);
 
 }

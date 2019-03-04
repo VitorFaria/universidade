@@ -30,14 +30,14 @@ public class MatriculaServiceImpl implements MatriculaService {
 	@Override
 	public void delete(int id_aluno, int id_curso) {
 		
-		MatriculaId mId= new MatriculaId(id_aluno, id_curso);	
-		
-		matriculaDao.deleteById(mId);
+		MatriculaId mId = new MatriculaId(id_aluno, id_curso);
+		matriculaDao.deleteById(mId); 
 	}
 
 	@Override
 	public Matricula findById(int id_aluno, int id_curso) {
 		MatriculaId mId= new MatriculaId(id_aluno, id_curso);
+		
 		Optional<Matricula> optionalMatricula = matriculaDao.findById(mId);
 		return optionalMatricula.isPresent() ? optionalMatricula.get() : null;
 	}
@@ -60,9 +60,8 @@ public class MatriculaServiceImpl implements MatriculaService {
 
     @Override
     public Matricula save(MatriculaDto matricula) throws Exception {
-	    Matricula newMatricula = new Matricula();
-	    MatriculaId mId= new MatriculaId(matricula.getId_aluno(), matricula.getId_curso());
-	    newMatricula.setId(mId);
+	    MatriculaId mId = new MatriculaId(matricula.getId_aluno(), matricula.getId_curso());
+	    Matricula newMatricula = new Matricula(mId);
 	    newMatricula.setData_matricula(matricula.getData_matricula());
         try {
         	return matriculaDao.save(newMatricula);

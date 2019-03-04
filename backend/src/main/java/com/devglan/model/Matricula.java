@@ -9,7 +9,7 @@ import javax.persistence.*;
 public class Matricula {
 		
 	@EmbeddedId
-    private MatriculaId id;
+    private MatriculaId matriculaId;
 	
 	@ManyToOne
     @JoinColumn(name="id_aluno", insertable=false, updatable=false)
@@ -22,12 +22,19 @@ public class Matricula {
     @Column(columnDefinition="date")
     private Date data_matricula;
 
-	public MatriculaId getId() {
-		return id;
+	public Matricula(MatriculaId matriculaId) {
+		this.matriculaId = matriculaId;
 	}
 
-	public void setId(MatriculaId id) {
-		this.id = id;
+	public Matricula() {
+	}
+
+	public MatriculaId getMatriculaId() {
+		return matriculaId;
+	}
+
+	public void setMatriculaId(MatriculaId matriculaId) {
+		this.matriculaId = matriculaId;
 	}
 
 	public Aluno getAluno() {

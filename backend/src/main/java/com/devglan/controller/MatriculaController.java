@@ -33,12 +33,12 @@ public class MatriculaController {
         return new ApiResponse<>(HttpStatus.OK.value(), "Lista de matriculas obtida corretamente.",matriculaService.findAll());
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/{id_aluno}/{id_curso}")
     public ApiResponse<Matricula> getOne(@PathVariable int id_aluno, @PathVariable int id_curso){
         return new ApiResponse<>(HttpStatus.OK.value(), "Matricula obtida corretamente.",matriculaService.findById(id_aluno, id_curso));
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/{id_aluno}/{id_curso}")
     public ApiResponse<MatriculaDto> update(@RequestBody MatriculaDto matriculaDto) {
         try {
         	return new ApiResponse<>(HttpStatus.OK.value(), "Matricula atualizada corretamente.",matriculaService.update(matriculaDto));
@@ -48,7 +48,7 @@ public class MatriculaController {
     	
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/{id_aluno}/{id_curso}")
     public ApiResponse<Void> delete(@PathVariable int id_aluno, @PathVariable int id_curso) {
         matriculaService.delete(id_aluno, id_curso);
         return new ApiResponse<>(HttpStatus.OK.value(), "Matricula obtida corretamente.", null);
