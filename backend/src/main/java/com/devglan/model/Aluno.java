@@ -1,6 +1,8 @@
 package com.devglan.model;
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.*;
 
@@ -19,6 +21,9 @@ public class Aluno {
     private String email;
     @Column(columnDefinition="date")
     private Date data_nascimento;
+    
+    @OneToMany(cascade = {CascadeType.ALL}, mappedBy = "aluno")
+    private Set<Matricula> matricula = new HashSet<Matricula>();
 
 
     public int getId() {
@@ -60,6 +65,4 @@ public class Aluno {
 	public void setData_nascimento(Date data_nascimento) {
 		this.data_nascimento = data_nascimento;
 	}
-
-
 }

@@ -50,8 +50,13 @@ public class CursoController {
 
     @DeleteMapping("/{id}")
     public ApiResponse<Void> delete(@PathVariable int id) {
-        cursoService.delete(id);
-        return new ApiResponse<>(HttpStatus.OK.value(), "Curso obtido corretamente.", null);
+    	try {
+    		cursoService.delete(id);
+    		return new ApiResponse<>(HttpStatus.OK.value(), "Curso obtido corretamente.", null);
+    	} catch (Exception e) {
+    		return new ApiResponse<>(HttpStatus.INTERNAL_SERVER_ERROR.value(), e.getMessage(), null);
+    	}
+    	
     }
 
 

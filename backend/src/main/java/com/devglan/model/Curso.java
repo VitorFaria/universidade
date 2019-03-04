@@ -1,6 +1,8 @@
 package com.devglan.model;
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.*;
 
@@ -18,7 +20,8 @@ public class Curso {
     @Column(columnDefinition="date")
     private Date data_fim;
 
-
+    @OneToMany(mappedBy = "curso")
+    private Set<Matricula> matricula = new HashSet<Matricula>();
 
     public int getId() {
         return id;
@@ -51,5 +54,8 @@ public class Curso {
 	public void setData_fim(Date data_fim) {
 		this.data_fim = data_fim;
 	}
-
+	
+	public boolean matriculaIsEmpty() {
+		return matricula.isEmpty();
+	}
 }

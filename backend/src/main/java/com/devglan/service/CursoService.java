@@ -9,7 +9,7 @@ public interface CursoService {
 
 	Curso save(CursoDto user) throws Exception;
     List<Curso> findAll();
-    void delete(int id);
+    void delete(int id) throws Exception;
 
     List<Curso> findByNome(String nome);
 

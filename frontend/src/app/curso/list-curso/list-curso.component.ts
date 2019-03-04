@@ -11,6 +11,7 @@ import {ApiService} from "../../core/api.service";
 export class ListCursoComponent implements OnInit {
 
   cursos: Curso[];
+  errorText = null;
 
   constructor(private router: Router, private apiService: ApiService) { }
 
@@ -26,9 +27,14 @@ export class ListCursoComponent implements OnInit {
   }
 
   deleteCurso(curso: Curso): void {
+    this.errorText = null;
     this.apiService.deleteCurso(curso.id)
       .subscribe( data => {
-        this.cursos = this.cursos.filter(u => u !== curso);
+        if(data.status === 200) {
+            this.cursos = this.cursos.filter(u => u !== curso);
+          }else {
+            this.errorText = data.message;
+          }
       })
   };
 

@@ -3,6 +3,7 @@ package com.devglan.service.impl;
 import com.devglan.dao.CursoDao;
 import com.devglan.model.Curso;
 import com.devglan.model.CursoDto;
+import com.devglan.model.Matricula;
 import com.devglan.service.CursoService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 
 @Service(value = "cursoService")
@@ -27,8 +29,12 @@ public class CursoServiceImpl implements CursoService {
 	}
 
 	@Override
-	public void delete(int id) {
-		cursoDao.deleteById(id);
+	public void delete(int id) throws Exception {
+		Curso curso = findById(id); 
+		if(curso.matriculaIsEmpty())
+			cursoDao.deleteById(id);
+		else
+			throw new Exception("Curso possui alunos matriculados.");
 	}
 
 	@Override
