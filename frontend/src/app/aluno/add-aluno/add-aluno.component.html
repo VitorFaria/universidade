@@ -1,24 +1,36 @@
 <div class="col-md-8 user-container">
   <h2 class="text-center">Adicionar Aluno</h2>
+  <div *ngIf="errorText" class="alert alert-danger">
+    <span>{{errorText}}</span>
+  </div>
   <form [formGroup]="addForm" (ngSubmit)="onSubmit()" #f="ngForm">
     <div class="form-group">
       <label for="nome">Nome:</label>
-      <input type="text" formControlName="nome" placeholder="Nome" name="nome" class="form-control" id="nome">
+      <input type="text" formControlName="nome" placeholder="Nome" name="nome" class="form-control" id="nome" [ngClass]="{ 'is-invalid': submitted && nome.errors }">
+      <div *ngIf="nome.invalid && submitted"
+          class="invalid-feedback">
+        <div *ngIf="nome.errors.required">
+          Nome é obrigatório!
+        </div>
+      </div>
     </div>
 
     <div class="form-group">
       <label for="cpf">CPF:</label>
-      <input type="cpf" formControlName="cpf" placeholder="CPF" name="cpf" class="form-control" id="cpf">
+      <input type="cpf" formControlName="cpf" placeholder="CPF" name="cpf" class="form-control" id="cpf" [ngClass]="{ 'is-invalid': submitted && cpf.errors }">
+      <div *ngIf="cpf.invalid && submitted"
+          class="invalid-feedback">
+        <div *ngIf="cpf.errors">
+          CPF inválido!
+        </div>
+      </div>
     </div>
 
     <div class="form-group">
       <label for="email">E-mail:</label>
       <input formControlName="email" placeholder="E-mail" name="email" class="form-control" id="email" [ngClass]="{ 'is-invalid': submitted && email.errors }">
       <div *ngIf="email.invalid && submitted"
-          class="alert alert-danger">
-        <div *ngIf="email.errors.required">
-          E-mail é obrigatório!
-        </div>
+          class="invalid-feedback">
         <div *ngIf="email.errors.email">
           E-mail inválido!
         </div>
