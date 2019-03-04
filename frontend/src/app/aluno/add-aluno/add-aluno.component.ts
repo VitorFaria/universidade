@@ -16,6 +16,10 @@ export class AddAlunoComponent implements OnInit {
   submitted = false;
   errorText = null;
 
+  get email() { return this.addForm.get('email'); }
+  get cpf() { return this.addForm.get('cpf'); }
+  get nome() { return this.addForm.get('nome'); }
+
   ngOnInit() {
     this.addForm = this.formBuilder.group({
       id: [],
@@ -26,10 +30,6 @@ export class AddAlunoComponent implements OnInit {
     });
 
   }
-
-  get email() { return this.addForm.get('email'); }
-  get cpf() { return this.addForm.get('cpf'); }
-  get nome() { return this.addForm.get('nome'); }
 
   onSubmit() {
     this.submitted = true;

@@ -42,7 +42,7 @@ export class ApiService {
     return this.http.get<ApiResponse>(this.baseAlunoUrl);
   }
 
-  getAlunorById(id: number): Observable<ApiResponse> {
+  getAlunoById(id: number): Observable<ApiResponse> {
     return this.http.get<ApiResponse>(this.baseAlunoUrl + id);
   }
 
