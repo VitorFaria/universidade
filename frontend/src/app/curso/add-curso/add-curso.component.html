@@ -1,0 +1,30 @@
+<div class="col-md-8 user-container">
+  <h2 class="text-center">Adicionar Curso</h2>
+  <div *ngIf="errorText" class="alert alert-danger">
+    <span>{{errorText}}</span>
+  </div>
+  <form [formGroup]="addForm" (ngSubmit)="onSubmit()" #f="ngForm">
+    <div class="form-group">
+      <label for="nome">Nome:</label>
+      <input type="text" formControlName="nome" placeholder="Nome" name="nome" class="form-control" id="nome" [ngClass]="{ 'is-invalid': submitted && nome.errors }">
+      <div *ngIf="nome.invalid && submitted"
+          class="invalid-feedback">
+        <div *ngIf="nome.errors.required">
+          Nome é obrigatório!
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="data_nascimento">Data de início:</label>
+      <input type="date" formControlName="data_inicio" placeholder="Data de início" name="data_inicio" class="form-control" id="data_inicio">
+    </div>
+
+    <div class="form-group">
+      <label for="data_fim">Data de fim:</label>
+      <input type="date" formControlName="data_fim" placeholder="Data de fim" name="data_fim" class="form-control" id="data_fim">
+    </div>
+
+    <button class="btn btn-success">Salvar</button>
+  </form>
+</div>
