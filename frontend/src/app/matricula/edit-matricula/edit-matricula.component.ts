@@ -31,6 +31,7 @@ export class EditMatriculaComponent implements OnInit {
     this.editForm = this.formBuilder.group({
       id_aluno: ['', Validators.required],
       id_curso: ['', Validators.required],
+      turno: [''],
       data_matricula: ['']
     });
     let id_aluno = matriculaId.split("sep")[0];
@@ -40,6 +41,7 @@ export class EditMatriculaComponent implements OnInit {
         this.editForm.setValue({
           id_aluno: data.result.aluno.id,
           id_curso: data.result.curso.id,
+          turno: data.result.turno,
           data_matricula: data.result.data_matricula.split("T")[0]
         });
       });

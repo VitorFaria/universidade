@@ -21,6 +21,10 @@ public class Matricula {
     
     @Column(columnDefinition="date")
     private Date data_matricula;
+    
+    @Enumerated
+    @Column(columnDefinition = "smallint")
+    private Turno turno;
 
 	public Matricula(MatriculaId matriculaId) {
 		this.matriculaId = matriculaId;
@@ -60,7 +64,13 @@ public class Matricula {
 	public void setData_matricula(Date data_matricula) {
 		this.data_matricula = data_matricula;
 	}
-    
-    
+
+	public Turno getTurno() {
+		return turno;
+	}
+
+	public void setTurno(Turno turno) {
+		this.turno = turno;
+	}
 
 }

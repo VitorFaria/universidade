@@ -63,6 +63,7 @@ public class MatriculaServiceImpl implements MatriculaService {
 	    MatriculaId mId = new MatriculaId(matricula.getId_aluno(), matricula.getId_curso());
 	    Matricula newMatricula = new Matricula(mId);
 	    newMatricula.setData_matricula(matricula.getData_matricula());
+	    newMatricula.setTurno(matricula.getTurno());
         try {
         	return matriculaDao.save(newMatricula);
         }

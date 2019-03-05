@@ -32,6 +32,7 @@ C:\GitVitor\universidade\backend\src\main\java\com\devglan\model\Matricula.java
 C:\GitVitor\universidade\backend\src\main\java\com\devglan\controller\DisciplinaController.java
 C:\GitVitor\universidade\backend\src\main\java\com\devglan\dao\UserDao.java
 C:\GitVitor\universidade\backend\src\main\java\com\devglan\model\Disciplina.java
+C:\GitVitor\universidade\backend\src\main\java\com\devglan\model\Turno.java
 C:\GitVitor\universidade\backend\src\main\java\com\devglan\config\ExceptionAdvice.java
 C:\GitVitor\universidade\backend\src\main\java\com\devglan\config\JwtTokenUtil.java
 C:\GitVitor\universidade\backend\src\main\java\com\devglan\service\CursoService.java

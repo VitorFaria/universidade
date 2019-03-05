@@ -53,18 +53,22 @@ VALUES
 INSERT INTO `universidade`.`matricula`
 (`id_aluno`,
 `id_curso`,
+`turno`,
 `data_matricula`)
 VALUES
 (1,
+1,
 1,
 '2019-02-02');
 
 INSERT INTO `universidade`.`matricula`
 (`id_aluno`,
 `id_curso`,
+`turno`,
 `data_matricula`)
 VALUES
 (2,
+2,
 2,
 '2018-03-01');
 

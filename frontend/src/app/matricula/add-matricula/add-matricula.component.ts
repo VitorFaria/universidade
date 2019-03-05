@@ -23,6 +23,7 @@ export class AddMatriculaComponent implements OnInit {
     this.addForm = this.formBuilder.group({
       id_aluno: ['', Validators.required],
       id_curso: ['', Validators.required],
+      turno: [''],
       data_matricula: ['']
     });
 

@@ -8,6 +8,7 @@
       <th class="hidden">Id Curso</th>
       <th>Aluno</th>
       <th>Curso</th>
+      <th>Turno</th>
       <th>Data de Matrícula</th>
       <th></th>
     </tr>
@@ -18,6 +19,7 @@
       <td class="hidden">{{matricula.curso.id}}</td>
       <td class="hidden">{{matricula.aluno.nome}}</td>
       <td class="hidden">{{matricula.curso.nome}}</td>
+      <td class="hidden">{{matricula.turno}}</td>
       <td>{{matricula.data_matricula | date: 'dd/MM/yyyy'}}</td>
       <td><button class="btn btn-success" (click)="deleteMatricula(matricula)"> Deletar</button>
         <button class="btn btn-success" (click)="editMatricula(matricula)" style="margin-left: 20px;"> Editar</button></td>
