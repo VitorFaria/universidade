@@ -3,7 +3,6 @@ package com.devglan.model;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
-
 import javax.persistence.*;
 
 @Entity
@@ -22,6 +21,9 @@ public class Curso {
 
     @OneToMany(mappedBy = "curso")
     private Set<Matricula> matricula = new HashSet<Matricula>();
+    
+    @OneToMany(cascade = {CascadeType.ALL}, mappedBy = "curso")
+    private Set<Disciplina> disciplina = new HashSet<Disciplina>();
 
     public int getId() {
         return id;
