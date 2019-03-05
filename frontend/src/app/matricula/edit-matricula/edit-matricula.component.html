@@ -1,0 +1,36 @@
+<div class="col-md-8 user-container">
+  <h2 class="text-center">Editar Matricula</h2>
+  <div *ngIf="errorText" class="alert alert-danger">
+    <span>{{errorText}}</span>
+  </div>
+  <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="id_aluno">Id de Aluno:</label>
+      <input type="text" formControlName="id_aluno" placeholder="Id de Aluno" name="id_aluno" class="form-control" id="id_aluno" [ngClass]="{ 'is-invalid': submitted && id_aluno.errors }" readonly="true">
+      <div *ngIf="id_aluno.invalid && submitted"
+          class="invalid-feedback">
+        <div *ngIf="id_aluno.errors.required">
+          Id de aluno é obrigatório!
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="id_curso">Id de Curso:</label>
+      <input type="text" formControlName="id_curso" placeholder="Id de Curso" name="id_curso" class="form-control" id="id_curso" [ngClass]="{ 'is-invalid': submitted && id_curso.errors }" readonly="true">
+      <div *ngIf="id_curso.invalid && submitted"
+          class="invalid-feedback">
+        <div *ngIf="id_curso.errors.required">
+          Id de curso é obrigatório!
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="data_matricula">Data de matrícula:</label>
+      <input type="date" formControlName="data_matricula" placeholder="Data de matrícula" name="data_matricula" class="form-control" id="data_matricula">
+    </div>
+
+    <button class="btn btn-success">Atualizar</button>
+  </form>
+</div>

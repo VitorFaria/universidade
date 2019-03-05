@@ -13,6 +13,7 @@ import { AddCursoComponent } from './curso/add-curso/add-curso.component';
 import { EditCursoComponent } from './curso/edit-curso/edit-curso.component';
 import { ListCursoComponent } from './curso/list-curso/list-curso.component';
 import { AddMatriculaComponent } from './matricula/add-matricula/add-matricula.component';
+import { EditMatriculaComponent } from './matricula/edit-matricula/edit-matricula.component';
 import { ListMatriculaComponent } from './matricula/list-matricula/list-matricula.component';
 import {ApiService} from "./core/api.service";
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
@@ -34,6 +35,7 @@ import {TokenInterceptor} from "./core/interceptor";
     EditCursoComponent,
     ListCursoComponent,
     AddMatriculaComponent,
+    EditMatriculaComponent,
     ListMatriculaComponent
   ],
   imports: [

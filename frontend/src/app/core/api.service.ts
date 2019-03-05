@@ -4,6 +4,7 @@ import {User} from "../model/user.model";
 import {Aluno} from "../model/aluno.model";
 import {Curso} from "../model/curso.model";
 import {Matricula} from "../model/matricula.model";
+import {MatriculaDto} from "../model/matricula-dto.model";
 import {Observable} from "rxjs/index";
 import {ApiResponse} from "../model/api.response";
 
@@ -96,8 +97,8 @@ export class ApiService {
     return this.http.post<ApiResponse>(this.baseMatriculaUrl, matricula);
   }
 
-  updateMatricula(matricula: Matricula): Observable<ApiResponse> {
-    return this.http.put<ApiResponse>(this.baseMatriculaUrl + matricula.aluno.id + '/' + matricula.curso.id, matricula);
+  updateMatricula(matricula: MatriculaDto): Observable<ApiResponse> {
+    return this.http.put<ApiResponse>(this.baseMatriculaUrl + matricula.id_aluno + '/' + matricula.id_curso, matricula);
   }
 
   deleteMatricula(id_aluno: number, id_curso: number): Observable<ApiResponse> {
