@@ -12,6 +12,7 @@ import { EditCursoComponent } from './curso/edit-curso/edit-curso.component';
 import { AddMatriculaComponent } from './matricula/add-matricula/add-matricula.component';
 import { ListMatriculaComponent } from './matricula/list-matricula/list-matricula.component';
 import { EditMatriculaComponent } from './matricula/edit-matricula/edit-matricula.component';
+import { AddDisciplinaComponent } from './disciplina/add-disciplina/add-disciplina.component';
 import { ListDisciplinaComponent } from './disciplina/list-disciplina/list-disciplina.component';
 
 
@@ -29,6 +30,7 @@ const routes: Routes = [
   { path: 'add-matricula', component: AddMatriculaComponent },
   { path: 'list-matricula', component: ListMatriculaComponent },
   { path: 'edit-matricula', component: EditMatriculaComponent },
+  { path: 'add-disciplina', component: AddDisciplinaComponent },
   { path: 'list-disciplina', component: ListDisciplinaComponent },
   {path : '', component : LoginComponent}
 ];
