@@ -17,6 +17,7 @@ export class AddDisciplinaComponent implements OnInit {
   errorText = null;
 
   get nome() { return this.addForm.get('nome'); }
+  get id_curso() { return this.addForm.get('id_curso'); }
 
   ngOnInit() {
     this.addForm = this.formBuilder.group({

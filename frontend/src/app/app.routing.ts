@@ -14,6 +14,7 @@ import { ListMatriculaComponent } from './matricula/list-matricula/list-matricul
 import { EditMatriculaComponent } from './matricula/edit-matricula/edit-matricula.component';
 import { AddDisciplinaComponent } from './disciplina/add-disciplina/add-disciplina.component';
 import { ListDisciplinaComponent } from './disciplina/list-disciplina/list-disciplina.component';
+import { EditDisciplinaComponent } from './disciplina/edit-disciplina/edit-disciplina.component';
 
 
 const routes: Routes = [
@@ -32,6 +33,7 @@ const routes: Routes = [
   { path: 'edit-matricula', component: EditMatriculaComponent },
   { path: 'add-disciplina', component: AddDisciplinaComponent },
   { path: 'list-disciplina', component: ListDisciplinaComponent },
+  { path: 'edit-disciplina', component: EditDisciplinaComponent },
   {path : '', component : LoginComponent}
 ];
 

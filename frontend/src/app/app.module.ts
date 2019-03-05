@@ -16,6 +16,7 @@ import { AddMatriculaComponent } from './matricula/add-matricula/add-matricula.c
 import { EditMatriculaComponent } from './matricula/edit-matricula/edit-matricula.component';
 import { ListMatriculaComponent } from './matricula/list-matricula/list-matricula.component';
 import { AddDisciplinaComponent } from './disciplina/add-disciplina/add-disciplina.component';
+import { EditDisciplinaComponent } from './disciplina/edit-disciplina/edit-disciplina.component';
 import { ListDisciplinaComponent } from './disciplina/list-disciplina/list-disciplina.component';
 import {ApiService} from "./core/api.service";
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
@@ -40,6 +41,7 @@ import {TokenInterceptor} from "./core/interceptor";
     EditMatriculaComponent,
     ListMatriculaComponent,
     AddDisciplinaComponent,
+    EditDisciplinaComponent,
     ListDisciplinaComponent
   ],
   imports: [
