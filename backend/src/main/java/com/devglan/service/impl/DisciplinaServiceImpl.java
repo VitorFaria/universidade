@@ -24,9 +24,15 @@ public class DisciplinaServiceImpl implements DisciplinaService {
 	@Autowired
 	private DisciplinaDao disciplinaDao;
 
-	public List<Disciplina> findAll() {
+	public List<Disciplina> findAll(Integer cursoFiltro) {
 		List<Disciplina> list = new ArrayList<>();
-		disciplinaDao.findAll().iterator().forEachRemaining(list::add);
+		if(cursoFiltro == null) {			
+			disciplinaDao.findAll().iterator().forEachRemaining(list::add);
+		} else {
+			disciplinaDao.findAll().forEach(dis -> {
+				if(dis.getCurso().getId() == cursoFiltro) list.add(dis);
+				});
+		}
 		return list;
 	}
 

@@ -1,6 +1,8 @@
 import { Component, OnInit , Inject} from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import {Router} from "@angular/router";
 import {Disciplina} from "../../model/disciplina.model";
+import {Curso} from "../../model/curso.model";
 import {ApiService} from "../../core/api.service";
 
 @Component({
@@ -11,7 +13,9 @@ import {ApiService} from "../../core/api.service";
 export class ListDisciplinaComponent implements OnInit {
 
   disciplinas: Disciplina[];
+  cursos: Curso[];
   errorText = null;
+  cursoFiltro = null;
 
   constructor(private router: Router, private apiService: ApiService) { }
 
@@ -20,11 +24,27 @@ export class ListDisciplinaComponent implements OnInit {
       this.router.navigate(['login']);
       return;
     }
-    this.apiService.getDisciplinas()
+    this.getDisciplinas();
+    this.getCursos();
+  };
+
+  getDisciplinas(): void {
+    this.apiService.getDisciplinas(this.cursoFiltro)
       .subscribe( data => {
           this.disciplinas = data.result;
       });
-  }
+  };
+
+  getCursos(): void {
+    this.apiService.getCursos()
+      .subscribe( data => {
+          this.cursos = data.result;
+      });
+  };
+
+  filter(): void {
+    this.getDisciplinas();
+  };
 
   deleteDisciplina(disciplina: Disciplina): void {
     this.errorText = null;

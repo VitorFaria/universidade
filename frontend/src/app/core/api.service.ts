@@ -110,8 +110,13 @@ export class ApiService {
 
 
 
-  getDisciplinas() : Observable<ApiResponse> {
-    return this.http.get<ApiResponse>(this.baseDisciplinaUrl);
+  getDisciplinas(cursoFiltro?: number) : Observable<ApiResponse> {
+    let url = this.baseDisciplinaUrl;
+    if(cursoFiltro){
+      url = url + '?'; 
+      url = url + 'cursoFiltro=' + cursoFiltro;
+    }
+    return this.http.get<ApiResponse>(url);
   }
 
   getDisciplinaById(id: number): Observable<ApiResponse> {

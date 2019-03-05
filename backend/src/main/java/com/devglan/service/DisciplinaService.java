@@ -8,7 +8,7 @@ import java.util.List;
 public interface DisciplinaService {
 
 	Disciplina save(DisciplinaDto user) throws Exception;
-    List<Disciplina> findAll();
+    List<Disciplina> findAll(Integer cursoFiltro);
     void delete(int id) throws Exception;
 
     List<Disciplina> findByNome(String nome);

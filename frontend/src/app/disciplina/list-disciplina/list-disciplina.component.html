@@ -3,6 +3,14 @@
   <div *ngIf="errorText" class="alert alert-danger">
     <span>{{errorText}}</span>
   </div>
+  <div class="row">
+    <div class="col-md-4">
+      <label for="filtroCurso">Curso:</label>
+      <select formControlName="filtroCurso" name="filtroCurso" id="filtroCurso" class="form-control">
+        <option *ngFor="let c of cursos" [ngValue]="c.valor">{{c.nome}}</option>
+      </select>
+    </div>
+  </div>
   <button class="btn btn-danger add-btn" (click)="addDisciplina()"> Adicionar Disciplina</button>
   <table class="table table-striped">
     <thead>
