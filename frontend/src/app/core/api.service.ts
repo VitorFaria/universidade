@@ -5,6 +5,8 @@ import {Aluno} from "../model/aluno.model";
 import {Curso} from "../model/curso.model";
 import {Matricula} from "../model/matricula.model";
 import {MatriculaDto} from "../model/matricula-dto.model";
+import {Disciplina} from "../model/disciplina.model";
+import {DisciplinaDto} from "../model/disciplina-dto.model";
 import {Observable} from "rxjs/index";
 import {ApiResponse} from "../model/api.response";
 
@@ -17,6 +19,7 @@ export class ApiService {
   baseAlunoUrl: string = this.baseUrl + 'alunos/';
   baseCursoUrl: string = this.baseUrl + 'cursos/';
   baseMatriculaUrl: string = this.baseUrl + 'matriculas/';
+  baseDisciplinaUrl: string = this.baseUrl + 'disciplinas/';
 
   login(loginPayload) : Observable<ApiResponse> {
     return this.http.post<ApiResponse>(this.baseUrl + 'token/generate-token', loginPayload);
@@ -85,7 +88,7 @@ export class ApiService {
   }
 
 
-   getMatriculas() : Observable<ApiResponse> {
+  getMatriculas() : Observable<ApiResponse> {
     return this.http.get<ApiResponse>(this.baseMatriculaUrl);
   }
 
@@ -103,5 +106,27 @@ export class ApiService {
 
   deleteMatricula(id_aluno: number, id_curso: number): Observable<ApiResponse> {
     return this.http.delete<ApiResponse>(this.baseMatriculaUrl + id_aluno + '/' + id_curso);
+  }
+
+
+
+  getDisciplinas() : Observable<ApiResponse> {
+    return this.http.get<ApiResponse>(this.baseDisciplinaUrl);
+  }
+
+  getDisciplinaById(id: number): Observable<ApiResponse> {
+    return this.http.get<ApiResponse>(this.baseDisciplinaUrl + id);
+  }
+
+  createDisciplina(disciplina: Disciplina): Observable<ApiResponse> {
+    return this.http.post<ApiResponse>(this.baseDisciplinaUrl, disciplina);
+  }
+
+  updateDisciplina(disciplina: DisciplinaDto): Observable<ApiResponse> {
+    return this.http.put<ApiResponse>(this.baseDisciplinaUrl + disciplina.id, disciplina);
+  }
+
+  deleteDisciplina(id: number): Observable<ApiResponse> {
+    return this.http.delete<ApiResponse>(this.baseDisciplinaUrl + id);
   }
 }

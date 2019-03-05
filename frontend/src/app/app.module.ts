@@ -15,6 +15,7 @@ import { ListCursoComponent } from './curso/list-curso/list-curso.component';
 import { AddMatriculaComponent } from './matricula/add-matricula/add-matricula.component';
 import { EditMatriculaComponent } from './matricula/edit-matricula/edit-matricula.component';
 import { ListMatriculaComponent } from './matricula/list-matricula/list-matricula.component';
+import { ListDisciplinaComponent } from './disciplina/list-disciplina/list-disciplina.component';
 import {ApiService} from "./core/api.service";
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {ReactiveFormsModule} from "@angular/forms";
@@ -36,7 +37,8 @@ import {TokenInterceptor} from "./core/interceptor";
     ListCursoComponent,
     AddMatriculaComponent,
     EditMatriculaComponent,
-    ListMatriculaComponent
+    ListMatriculaComponent,
+    ListDisciplinaComponent
   ],
   imports: [
     BrowserModule,
