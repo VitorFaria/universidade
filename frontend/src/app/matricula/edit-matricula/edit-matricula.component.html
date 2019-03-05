@@ -28,7 +28,9 @@
 
     <div class="form-group">
       <label for="turno">Turno:</label>
-      <input type="text" formControlName="turno" placeholder="Turno" name="turno" class="form-control" id="turno">
+      <select formControlName="turno" name="turno" id="turno" placeholder="Turno" class="form-control">
+        <option *ngFor="let t of turnos" [ngValue]="t.valor">{{t.nome}}</option>
+      </select>
     </div>
 
     <div class="form-group">

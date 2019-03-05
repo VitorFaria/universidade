@@ -18,6 +18,10 @@ export class EditMatriculaComponent implements OnInit {
   errorText = null;
   constructor(private formBuilder: FormBuilder,private router: Router, private apiService: ApiService) { }
 
+  turnos =[{valor:'MANHA', nome:'Manhã'},
+  {valor:'TARDE', nome:'Tarde'},
+  {valor:'NOITE', nome:'Noite'}];
+
   get id_aluno() { return this.editForm.get('id_aluno'); }
   get id_curso() { return this.editForm.get('id_curso'); }
 

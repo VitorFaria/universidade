@@ -16,6 +16,10 @@ export class AddMatriculaComponent implements OnInit {
   submitted = false;
   errorText = null;
 
+  turnos =[{valor:'MANHA', nome:'Manhã'},
+  {valor:'TARDE', nome:'Tarde'},
+  {valor:'NOITE', nome:'Noite'}];
+
   get id_aluno() { return this.addForm.get('id_aluno'); }
   get id_curso() { return this.addForm.get('id_curso'); }
 
@@ -23,7 +27,7 @@ export class AddMatriculaComponent implements OnInit {
     this.addForm = this.formBuilder.group({
       id_aluno: ['', Validators.required],
       id_curso: ['', Validators.required],
-      turno: [''],
+      turno: ['MANHA'],
       data_matricula: ['']
     });
 
