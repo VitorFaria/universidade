@@ -31,14 +31,16 @@ export class EditDisciplinaComponent implements OnInit {
     this.editForm = this.formBuilder.group({
       id: [''],
       nome: ['', Validators.required],
-      id_curso: ['', Validators.required]
+      id_curso: ['', Validators.required],
+      nome_curso: ['', Validators.required],
     });
     this.apiService.getDisciplinaById(+disciplinaId)
       .subscribe( data => {
         this.editForm.setValue({
           id: data.result.id,
           nome: data.result.nome,
-          id_curso: data.result.curso.id
+          id_curso: data.result.curso.id,
+          nome_curso: data.result.curso.nome
         });
       });
   }

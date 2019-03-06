@@ -5,25 +5,13 @@
   </div>
   <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
     <div class="form-group">
-      <label for="id_aluno">Id de Aluno:</label>
-      <input type="text" formControlName="id_aluno" placeholder="Id de Aluno" name="id_aluno" class="form-control" id="id_aluno" [ngClass]="{ 'is-invalid': submitted && id_aluno.errors }" readonly="true">
-      <div *ngIf="id_aluno.invalid && submitted"
-          class="invalid-feedback">
-        <div *ngIf="id_aluno.errors.required">
-          Id de aluno é obrigatório!
-        </div>
-      </div>
+      <label for="nome_aluno">Aluno:</label>
+      <input type="text" formControlName="nome_aluno" placeholder="Aluno" name="nome_aluno" class="form-control" id="nome_aluno" readonly="true">
     </div>
 
     <div class="form-group">
-      <label for="id_curso">Id de Curso:</label>
-      <input type="text" formControlName="id_curso" placeholder="Id de Curso" name="id_curso" class="form-control" id="id_curso" [ngClass]="{ 'is-invalid': submitted && id_curso.errors }" readonly="true">
-      <div *ngIf="id_curso.invalid && submitted"
-          class="invalid-feedback">
-        <div *ngIf="id_curso.errors.required">
-          Id de curso é obrigatório!
-        </div>
-      </div>
+      <label for="nome_curso">Curso:</label>
+      <input type="text" formControlName="nome_curso" placeholder="Curso" name="nome_curso" class="form-control" id="nome_curso" readonly="true">
     </div>
 
     <div class="form-group">

@@ -5,8 +5,11 @@
   </div>
   <form [formGroup]="addForm" (ngSubmit)="onSubmit()" #f="ngForm">
     <div class="form-group">
-      <label for="id_aluno">Id de Aluno:</label>
-      <input type="text" formControlName="id_aluno" placeholder="Id de Aluno" name="id_aluno" class="form-control" id="id_aluno" [ngClass]="{ 'is-invalid': submitted && id_aluno.errors }">
+      <label for="id_aluno">Aluno:</label>
+      <select formControlName="id_aluno" name="id_aluno" id="id_aluno" class="form-control">
+        <option value="0" disabled selected hidden>Aluno</option>
+        <option *ngFor="let a of alunos" [ngValue]="a.id">{{a.nome}}</option>
+      </select>
       <div *ngIf="id_aluno.invalid && submitted"
           class="invalid-feedback">
         <div *ngIf="id_aluno.errors.required">
@@ -16,8 +19,11 @@
     </div>
 
     <div class="form-group">
-      <label for="id_curso">Id de Curso:</label>
-      <input type="text" formControlName="id_curso" placeholder="Id de Curso" name="id_curso" class="form-control" id="id_curso" [ngClass]="{ 'is-invalid': submitted && id_curso.errors }">
+      <label for="id_curso">Curso:</label>
+      <select formControlName="id_curso" name="id_curso" id="id_curso" class="form-control">
+        <option value="0" disabled selected hidden>Curso</option>
+        <option *ngFor="let c of cursos" [ngValue]="c.id">{{c.nome}}</option>
+      </select>
       <div *ngIf="id_curso.invalid && submitted"
           class="invalid-feedback">
         <div *ngIf="id_curso.errors.required">

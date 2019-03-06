@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
 import {ApiService} from "../../core/api.service";
+import {Curso} from "../../model/curso.model";
+import {Aluno} from "../../model/aluno.model";
 
 @Component({
   selector: 'app-add-matricula',
@@ -12,6 +14,8 @@ export class AddMatriculaComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder,private router: Router, private apiService: ApiService) { }
 
+  cursos: Curso[];
+  alunos: Aluno[];
   addForm: FormGroup;
   submitted = false;
   errorText = null;
@@ -30,8 +34,23 @@ export class AddMatriculaComponent implements OnInit {
       turno: ['MANHA'],
       data_matricula: ['']
     });
-
+    this.getCursos();
+    this.getAlunos();
   }
+
+  getCursos(): void {
+    this.apiService.getCursos()
+      .subscribe( data => {
+          this.cursos = data.result;
+      });
+  };
+
+  getAlunos(): void {
+    this.apiService.getAlunos()
+      .subscribe( data => {
+          this.alunos = data.result;
+      });
+  };
 
   onSubmit() {
     this.submitted = true;
