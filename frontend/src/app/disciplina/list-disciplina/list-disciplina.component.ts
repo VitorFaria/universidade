@@ -1,5 +1,5 @@
-import { Component, OnInit , Inject} from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { Component, OnInit , Inject, NgModule} from '@angular/core';
+import { FormsModule, ReactiveFormsModule, FormGroup, FormControl, FormBuilder } from '@angular/forms'; 
 import {Router} from "@angular/router";
 import {Disciplina} from "../../model/disciplina.model";
 import {Curso} from "../../model/curso.model";
@@ -15,9 +15,11 @@ export class ListDisciplinaComponent implements OnInit {
   disciplinas: Disciplina[];
   cursos: Curso[];
   errorText = null;
-  cursoFiltro = null;
+  form: FormGroup;
 
-  constructor(private router: Router, private apiService: ApiService) { }
+  constructor(private router: Router, private apiService: ApiService, private formBuilder: FormBuilder) { 
+    this.form = new FormGroup({filtroCurso: new FormControl()});
+  }
 
   ngOnInit() {
     if(!window.localStorage.getItem('token')) {
@@ -29,7 +31,7 @@ export class ListDisciplinaComponent implements OnInit {
   };
 
   getDisciplinas(): void {
-    this.apiService.getDisciplinas(this.cursoFiltro)
+    this.apiService.getDisciplinas(this.form.get("filtroCurso").value)
       .subscribe( data => {
           this.disciplinas = data.result;
       });

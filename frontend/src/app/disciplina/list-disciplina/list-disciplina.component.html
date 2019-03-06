@@ -5,10 +5,17 @@
   </div>
   <div class="row">
     <div class="col-md-4">
-      <label for="filtroCurso">Curso:</label>
-      <select formControlName="filtroCurso" name="filtroCurso" id="filtroCurso" class="form-control">
-        <option *ngFor="let c of cursos" [ngValue]="c.valor">{{c.nome}}</option>
-      </select>
+      <div class="row">
+        <form [formGroup]="form">
+          <span>Curso:</span>
+          <select formControlName="filtroCurso" name="filtroCurso" id="filtroCurso" class="form-control">
+            <option *ngFor="let c of cursos" [ngValue]="c.id">{{c.nome}}</option>
+          </select>
+        </form>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <button class="btn btn-primary" (click)="filter()"> Filtar</button>
     </div>
   </div>
   <button class="btn btn-danger add-btn" (click)="addDisciplina()"> Adicionar Disciplina</button>
