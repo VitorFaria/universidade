@@ -29,8 +29,8 @@ public class DisciplinaController {
     }
 
     @GetMapping
-    public ApiResponse<List<Disciplina>> listDisciplina(@RequestParam(value="cursoFiltro", required=false) Integer cursoFiltro){
-        return new ApiResponse<>(HttpStatus.OK.value(), "Lista de disciplinas obtida corretamente.",disciplinaService.findAll(cursoFiltro));
+    public ApiResponse<List<Disciplina>> listDisciplina(@RequestParam(value="cursoFiltro", required=false) Integer cursoFiltro, @RequestParam(value="filtroNome", required=false) String filtroNome){
+        return new ApiResponse<>(HttpStatus.OK.value(), "Lista de disciplinas obtida corretamente.",disciplinaService.findAll(cursoFiltro, filtroNome));
     }
 
     @GetMapping("/{id}")

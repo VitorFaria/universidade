@@ -110,11 +110,14 @@ export class ApiService {
 
 
 
-  getDisciplinas(cursoFiltro?: number) : Observable<ApiResponse> {
+  getDisciplinas(cursoFiltro?: number, filtroNome?: string) : Observable<ApiResponse> {
     let url = this.baseDisciplinaUrl;
     if(cursoFiltro){
       url = url + '?'; 
-      url = url + 'cursoFiltro=' + cursoFiltro;
+      url = url + 'cursoFiltro=' + cursoFiltro + '&';
+    }
+    if(filtroNome){
+      url = url + 'filtroNome=' + filtroNome;
     }
     return this.http.get<ApiResponse>(url);
   }

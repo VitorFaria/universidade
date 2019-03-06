@@ -18,7 +18,7 @@ export class ListDisciplinaComponent implements OnInit {
   form: FormGroup;
 
   constructor(private router: Router, private apiService: ApiService, private formBuilder: FormBuilder) { 
-    this.form = new FormGroup({filtroCurso: new FormControl()});
+    this.form = new FormGroup({filtroCurso: new FormControl(0), filtroNome: new FormControl()});
   }
 
   ngOnInit() {
@@ -31,7 +31,7 @@ export class ListDisciplinaComponent implements OnInit {
   };
 
   getDisciplinas(): void {
-    this.apiService.getDisciplinas(this.form.get("filtroCurso").value)
+    this.apiService.getDisciplinas(this.form.get("filtroCurso").value, this.form.get("filtroNome").value)
       .subscribe( data => {
           this.disciplinas = data.result;
       });
@@ -46,6 +46,11 @@ export class ListDisciplinaComponent implements OnInit {
 
   filter(): void {
     this.getDisciplinas();
+  };
+
+  cleanFilter(): void {
+    this.form = new FormGroup({filtroCurso: new FormControl(0), filtroNome: new FormControl()});
+    this.filter();
   };
 
   deleteDisciplina(disciplina: Disciplina): void {

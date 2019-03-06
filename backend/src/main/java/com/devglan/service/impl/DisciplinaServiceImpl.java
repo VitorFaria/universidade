@@ -24,16 +24,14 @@ public class DisciplinaServiceImpl implements DisciplinaService {
 	@Autowired
 	private DisciplinaDao disciplinaDao;
 
-	public List<Disciplina> findAll(Integer cursoFiltro) {
+	public List<Disciplina> findAll(Integer cursoFiltro, String filtroNome) {
 		List<Disciplina> list = new ArrayList<>();
-		if(cursoFiltro == null) {			
-			disciplinaDao.findAll().iterator().forEachRemaining(list::add);
-		} else {
-			disciplinaDao.findAll().forEach(dis -> {
-				if(dis.getCurso().getId() == cursoFiltro) list.add(dis);
-				});
-		}
-		return list;
+		disciplinaDao.findAll().iterator().forEachRemaining(list::add);
+		
+		List<Disciplina> listFiltered = filterCurso(cursoFiltro, list);
+		listFiltered = filterNome(filtroNome, listFiltered);
+		
+		return listFiltered;
 	}
 
 	@Override
@@ -86,4 +84,28 @@ public class DisciplinaServiceImpl implements DisciplinaService {
             throw new Exception("TODO");
         }
     }
+    
+	private List<Disciplina> filterCurso(Integer cursoFiltro, List<Disciplina> list) {
+		if(cursoFiltro != null) {			
+			List<Disciplina> listFiltered = new ArrayList<>();
+			list.forEach(dis -> {
+				if(dis.getCurso().getId() == cursoFiltro) listFiltered.add(dis);
+				});
+			return listFiltered;
+		} else {
+			return list;
+		}
+	}
+	
+	private List<Disciplina> filterNome(String cursoNome, List<Disciplina> list) {
+		if(cursoNome != null) {			
+			List<Disciplina> listFiltered = new ArrayList<>();
+			list.forEach(dis -> {
+				if(dis.getNome() != null && dis.getNome().contains(cursoNome)) listFiltered.add(dis);
+				});
+			return listFiltered;
+		} else {
+			return list;
+		}
+	}
 }
