@@ -7,6 +7,8 @@ import com.devglan.service.DisciplinaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import static com.rollbar.notifier.config.ConfigBuilder.withAccessToken;
+import com.rollbar.notifier.Rollbar;
 
 import java.util.List;
 
@@ -14,6 +16,12 @@ import java.util.List;
 @RestController
 @RequestMapping("/disciplinas")
 public class DisciplinaController {
+	
+	Rollbar rollbar;
+	
+	public DisciplinaController() {
+		rollbar = Rollbar.init(withAccessToken("faketoken").build());
+	}
 
     @Autowired
     private DisciplinaService disciplinaService;
@@ -23,14 +31,15 @@ public class DisciplinaController {
     	try {
     		return new ApiResponse<>(HttpStatus.OK.value(), "Disciplina salvo corretamente.",disciplinaService.save(disciplina));
     	} catch (Exception e) {
+    		rollbar.error(e.getMessage());
     		return new ApiResponse<>(HttpStatus.INTERNAL_SERVER_ERROR.value(), e.getMessage(), null);
     	}
     	
     }
 
     @GetMapping
-    public ApiResponse<List<Disciplina>> listDisciplina(@RequestParam(value="cursoFiltro", required=false) Integer cursoFiltro, @RequestParam(value="filtroNome", required=false) String filtroNome){
-        return new ApiResponse<>(HttpStatus.OK.value(), "Lista de disciplinas obtida corretamente.",disciplinaService.findAll(cursoFiltro, filtroNome));
+    public ApiResponse<List<Disciplina>> listDisciplina(@RequestParam(value="cursoFiltro", required=false) Integer cursoFiltro, @RequestParam(value="filtroNome", required=false) String filtroNome){  	
+    	return new ApiResponse<>(HttpStatus.OK.value(), "Lista de disciplinas obtida corretamente.",disciplinaService.findAll(cursoFiltro, filtroNome));
     }
 
     @GetMapping("/{id}")
@@ -43,6 +52,7 @@ public class DisciplinaController {
         try {
         	return new ApiResponse<>(HttpStatus.OK.value(), "Disciplina atualizado corretamente.",disciplinaService.update(disciplinaDto));
     	} catch (Exception e) {
+    		rollbar.error(e.getMessage());
     		return new ApiResponse<>(HttpStatus.INTERNAL_SERVER_ERROR.value(), e.getMessage(), null);
     	}
     	
@@ -54,6 +64,7 @@ public class DisciplinaController {
     		disciplinaService.delete(id);
     		return new ApiResponse<>(HttpStatus.OK.value(), "Disciplina obtido corretamente.", null);
     	} catch (Exception e) {
+    		rollbar.error(e.getMessage());
     		return new ApiResponse<>(HttpStatus.INTERNAL_SERVER_ERROR.value(), e.getMessage(), null);
     	}
     	

@@ -4,9 +4,13 @@ import com.devglan.model.ApiResponse;
 import com.devglan.model.Curso;
 import com.devglan.model.CursoDto;
 import com.devglan.service.CursoService;
+import com.rollbar.notifier.Rollbar;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+
+import static com.rollbar.notifier.config.ConfigBuilder.withAccessToken;
 
 import java.util.List;
 
@@ -15,6 +19,12 @@ import java.util.List;
 @RequestMapping("/cursos")
 public class CursoController {
 
+	Rollbar rollbar;
+	
+	public CursoController() {
+		rollbar = Rollbar.init(withAccessToken("faketoken").build());
+	}
+	
     @Autowired
     private CursoService cursoService;
 
@@ -23,6 +33,7 @@ public class CursoController {
     	try {
     		return new ApiResponse<>(HttpStatus.OK.value(), "Curso salvo corretamente.",cursoService.save(curso));
     	} catch (Exception e) {
+    		rollbar.error(e.getMessage());
     		return new ApiResponse<>(HttpStatus.INTERNAL_SERVER_ERROR.value(), e.getMessage(), null);
     	}
     	
@@ -43,6 +54,7 @@ public class CursoController {
         try {
         	return new ApiResponse<>(HttpStatus.OK.value(), "Curso atualizado corretamente.",cursoService.update(cursoDto));
     	} catch (Exception e) {
+    		rollbar.error(e.getMessage());
     		return new ApiResponse<>(HttpStatus.INTERNAL_SERVER_ERROR.value(), e.getMessage(), null);
     	}
     	
@@ -54,6 +66,7 @@ public class CursoController {
     		cursoService.delete(id);
     		return new ApiResponse<>(HttpStatus.OK.value(), "Curso obtido corretamente.", null);
     	} catch (Exception e) {
+    		rollbar.error(e.getMessage());
     		return new ApiResponse<>(HttpStatus.INTERNAL_SERVER_ERROR.value(), e.getMessage(), null);
     	}
     	

@@ -3,6 +3,10 @@ package com.devglan.controller;
 import com.devglan.config.JwtTokenUtil;
 import com.devglan.model.*;
 import com.devglan.service.UserService;
+import com.rollbar.notifier.Rollbar;
+
+import static com.rollbar.notifier.config.ConfigBuilder.withAccessToken;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -17,6 +21,12 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/token")
 public class AuthenticationController {
 
+	Rollbar rollbar;
+	
+	public AuthenticationController() {
+		rollbar = Rollbar.init(withAccessToken("faketoken").build());
+	}
+	
     @Autowired
     private AuthenticationManager authenticationManager;
 

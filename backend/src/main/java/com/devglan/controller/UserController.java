@@ -4,9 +4,13 @@ import com.devglan.model.ApiResponse;
 import com.devglan.model.User;
 import com.devglan.model.UserDto;
 import com.devglan.service.UserService;
+import com.rollbar.notifier.Rollbar;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+
+import static com.rollbar.notifier.config.ConfigBuilder.withAccessToken;
 
 import java.util.List;
 
@@ -15,6 +19,12 @@ import java.util.List;
 @RequestMapping("/users")
 public class UserController {
 
+	Rollbar rollbar;
+	
+	public UserController() {
+		rollbar = Rollbar.init(withAccessToken("faketoken").build());
+	}
+	
     @Autowired
     private UserService userService;
 

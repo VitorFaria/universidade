@@ -4,9 +4,13 @@ import com.devglan.model.ApiResponse;
 import com.devglan.model.Matricula;
 import com.devglan.model.MatriculaDto;
 import com.devglan.service.MatriculaService;
+import com.rollbar.notifier.Rollbar;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+
+import static com.rollbar.notifier.config.ConfigBuilder.withAccessToken;
 
 import java.util.List;
 
@@ -15,6 +19,12 @@ import java.util.List;
 @RequestMapping("/matriculas")
 public class MatriculaController {
 
+	Rollbar rollbar;
+	
+	public MatriculaController() {
+		rollbar = Rollbar.init(withAccessToken("faketoken").build());
+	}
+	
     @Autowired
     private MatriculaService matriculaService;
 
@@ -23,6 +33,7 @@ public class MatriculaController {
     	try {
     		return new ApiResponse<>(HttpStatus.OK.value(), "Matricula salva corretamente.",matriculaService.save(matricula));
     	} catch (Exception e) {
+    		rollbar.error(e.getMessage());
     		return new ApiResponse<>(HttpStatus.INTERNAL_SERVER_ERROR.value(), e.getMessage(), null);
     	}
     	
@@ -43,6 +54,7 @@ public class MatriculaController {
         try {
         	return new ApiResponse<>(HttpStatus.OK.value(), "Matricula atualizada corretamente.",matriculaService.update(matriculaDto));
     	} catch (Exception e) {
+    		rollbar.error(e.getMessage());
     		return new ApiResponse<>(HttpStatus.INTERNAL_SERVER_ERROR.value(), e.getMessage(), null);
     	}
     	
